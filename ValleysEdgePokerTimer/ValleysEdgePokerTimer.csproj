@@ -95,6 +95,27 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\Pause1.png" />
+    <Resource Include="res\Pause2.png" />
+    <Resource Include="res\Play1.png" />
+    <Resource Include="res\Play2.png" />
+    <Resource Include="res\Stop1.png" />
+    <Resource Include="res\Stop2.png" />
+    <Resource Include="res\valleys_edge_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\Fwd1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\Fwd2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\Rwd1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="res\Rwd2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
