@@ -7,17 +7,54 @@
         mc:Ignorable="d"
         Title="Valley's Edge Poker Timer" Height="819.53" Width="1232.64" Background="#FF004600">
     <Grid>
-        <Label x:Name="cur_blinks_lb" Content="0/0" Margin="819,255,263,420" Height="114" Width="143" Foreground="White" FontSize="73.333" FontWeight="Bold"/>
-        <Label x:Name="cur_time_lb" Content="00:00:00" Margin="596,496,346,179" Foreground="White" FontSize="73.333" RenderTransformOrigin="0.5,0.5" Height="114" Width="283"/>
-        <Label Content="Current" Width="200" Height="50" Margin="236,284,789,455" Foreground="White" FontSize="32"/>
-        <Label Content="Next Blinds" Margin="452,400,626,343" Foreground="White" FontSize="24" Height="46" Width="147"/>
-        <Label x:Name="next_blinds_lb" Content="0/0" Width="100" Height="100" Margin="636,391,489,298" Foreground="White" FontSize="32" FontWeight="Bold"/>
-        <Label Content="Next Break" Margin="317,530,730,200" Height="59" Width="178" Foreground="White" FontSize="32"/>
-        <Label Content="00:00:00" Margin="424,255,503,439" Foreground="White" Height="95" Width="298" FontSize="73.333"/>
-        <Image Source="/res/valleys_edge_logo.png" Width="400" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Image x:Name="PlayBtn" Source="/res/Play1.png" Width="70" Height="70" Margin="533,652,622,67" MouseEnter="PlayBtn_MouseEnter" MouseLeave="PlayBtn_MouseLeave"/>
-        <Image x:Name="StopBtn" Source="/res/Stop1.png" Height="70" Margin="608,652,547,67" Width="70" MouseEnter="StopBtn_MouseEnter" MouseLeave="StopBtn_MouseLeave"/>
-        <Image x:Name="RewindBtn" Source="/res/Rwd1.png" Height="70" Margin="452,652,703,67" Width="70" MouseEnter="RewindBtn_MouseEnter" MouseLeave="RewindBtn_MouseLeave"/>
-        <Image x:Name="FastForwardBtn" Source="/res/Fwd1.png" Height="70" Margin="683,652,472,67" Width="70" MouseEnter="FastForwardBtn_MouseEnter" MouseLeave="FastForwardBtn_MouseLeave"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400*"/>
+            <ColumnDefinition Width="107*"/>
+            <ColumnDefinition Width="105*"/>
+            <ColumnDefinition Width="106*"/>
+            <ColumnDefinition Width="107*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="225*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="99*"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="42*"/>
+            <RowDefinition Height="63*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="168*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/res/valleys_edge_logo.png" Grid.Row="0" Grid.Column="0"/>
+        <Viewbox Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="4">
+            <TextBlock Text="Poker Timer" FontFamily="Segoe Print" FontWeight="Bold"/>
+        </Viewbox>
+        <Viewbox Grid.Column="0" Grid.Row="2">
+            <TextBlock Text="Current" Foreground="White"/>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4">
+            <TextBlock Text="00:00:00" Foreground="White"/>
+        </Viewbox>
+        <Viewbox Grid.Column="5" Grid.Row="2">
+            <TextBlock Text="0/0" Foreground="White" FontWeight="Bold"/>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2">
+            <TextBlock Text="Next Blind" Foreground="White" FontWeight="Bold"/>
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2">
+            <TextBlock Text="0/0" Foreground="White" FontWeight="Bold"/>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2">
+            <TextBlock Text="Next Break" Foreground="White" FontWeight="Bold"/>
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2">
+            <TextBlock Text="00:00:00" Foreground="White" FontWeight="Bold"/>
+        </Viewbox>
+        <Image x:Name="PlayBtn" Source="/res/Play1.png" MouseEnter="PlayBtn_MouseEnter" MouseLeave="PlayBtn_MouseLeave" Grid.Row="8" Grid.Column="2"/>
+        <Image x:Name="StopBtn" Source="/res/Stop1.png" MouseEnter="StopBtn_MouseEnter" MouseLeave="StopBtn_MouseLeave" Grid.Row="8" Grid.Column="3"/>
+        <Image x:Name="RewindBtn" Source="/res/Rwd1.png" MouseEnter="RewindBtn_MouseEnter" MouseLeave="RewindBtn_MouseLeave" Grid.Row="8" Grid.Column="1"/>
+        <Image x:Name="FastForwardBtn" Source="/res/Fwd1.png" MouseEnter="FastForwardBtn_MouseEnter" MouseLeave="FastForwardBtn_MouseLeave" Grid.Row="8" Grid.Column="4"/>
     </Grid>
 </Window>
