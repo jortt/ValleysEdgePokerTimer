@@ -32,7 +32,8 @@
             <MenuItem Header="_Menu" Height="25" Width="56">
                 <MenuItem Header="_New Tournament"/>
                 <MenuItem Header="_Edit Tournament" IsEnabled="False"/>
-                <MenuItem Header="_Exit"/>
+                <MenuItem Header="_About" Click="About_Click"/>
+                <MenuItem Header="_Exit" Click="Exit_Click"/>
             </MenuItem>
         </Menu>
         <Image Source="/res/valleys_edge_logo.png" Grid.Row="1" Grid.Column="0"/>

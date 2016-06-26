@@ -64,5 +64,16 @@ namespace ValleysEdgePokerTimer
         {
             FastForwardBtn.Source = new BitmapImage(new Uri("/res/Fwd1.png", UriKind.Relative));
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            AboutWindow about = new AboutWindow();
+            about.ShowDialog();
+        }
     }
 }
