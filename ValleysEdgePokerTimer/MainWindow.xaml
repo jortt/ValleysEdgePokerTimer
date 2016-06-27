@@ -30,7 +30,7 @@
         </Grid.RowDefinitions>
         <Menu IsMainMenu="True" Name="main_menu" Grid.ColumnSpan="7">
             <MenuItem Header="_Menu" Height="25" Width="56">
-                <MenuItem Header="_New Tournament"/>
+                <MenuItem Header="_New Tournament" Click="New_Tournament_Click"/>
                 <MenuItem Header="_Edit Tournament" IsEnabled="False"/>
                 <MenuItem Header="_About" Click="About_Click"/>
                 <MenuItem Header="_Exit" Click="Exit_Click"/>

@@ -75,5 +75,11 @@ namespace ValleysEdgePokerTimer
             AboutWindow about = new AboutWindow();
             about.ShowDialog();
         }
+
+        private void New_Tournament_Click(object sender, RoutedEventArgs e)
+        {
+            TournamentWindow tournament_window = new TournamentWindow();
+            tournament_window.ShowDialog();
+        }
     }
 }
