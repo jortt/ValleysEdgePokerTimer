@@ -21,6 +21,7 @@ namespace ValleysEdgePokerTimer
     {
         private const int kRoundNum = 8;
 
+        private List<Viewbox> round_check_boxes = new List<Viewbox>(kRoundNum);
         private List<Viewbox> round_labels = new List<Viewbox>(kRoundNum);
         private List<Viewbox> small_blind_labels = new List<Viewbox>(kRoundNum);
         private List<Viewbox> small_blind_inputs = new List<Viewbox>(kRoundNum);
@@ -35,6 +36,20 @@ namespace ValleysEdgePokerTimer
 
             for(int i = 0; i < kRoundNum; i++)
             {
+                //round checkbox
+                CheckBox round_cb = new CheckBox();
+                round_cb.Background = Brushes.Transparent;
+                round_cb.BorderBrush = Brushes.White;
+                Viewbox round_cb_view = new Viewbox();
+
+                round_cb_view.Child = round_cb;
+                round_check_boxes.Add(round_cb_view);
+
+                Grid.SetRow(round_cb_view, i);
+                Grid.SetColumn(round_cb_view, 0);
+
+                main_grid.Children.Add(round_check_boxes.ElementAt(i));
+
                 //round label
                 TextBlock round_lb = new TextBlock();
                 Viewbox round_lb_view = new Viewbox();
@@ -65,6 +80,9 @@ namespace ValleysEdgePokerTimer
 
                 //small blind input
                 TextBox small_blind_in = new TextBox();
+                small_blind_in.Background = Brushes.Transparent;
+                small_blind_in.BorderBrush = Brushes.Transparent;
+                small_blind_in.Foreground = Brushes.White;
                 Viewbox small_blind_in_view = new Viewbox();
 
                 small_blind_in.Text = "0";
@@ -93,6 +111,9 @@ namespace ValleysEdgePokerTimer
 
                 //large blind input
                 TextBox large_blind_in = new TextBox();
+                large_blind_in.Background = Brushes.Transparent;
+                large_blind_in.BorderBrush = Brushes.Transparent;
+                large_blind_in.Foreground = Brushes.White;
                 Viewbox large_blind_in_view = new Viewbox();
 
                 large_blind_in.Text = "0";
@@ -121,6 +142,9 @@ namespace ValleysEdgePokerTimer
 
                 //duration input
                 TextBox duration_in = new TextBox();
+                duration_in.Background = Brushes.Transparent;
+                duration_in.BorderBrush = Brushes.Transparent;
+                duration_in.Foreground = Brushes.White;
                 Viewbox duration_in_view = new Viewbox();
 
                 duration_in.Text = "0";
