@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace ValleysEdgePokerTimer
 {
@@ -19,27 +20,28 @@ namespace ValleysEdgePokerTimer
     /// </summary>
     public partial class TournamentWindow : Window
     {
-        private const int kRoundNum = 8;
+        private List<Viewbox> round_check_boxes = new List<Viewbox>(Tournament.NumberOfRounds);
+        private List<Viewbox> round_labels = new List<Viewbox>(Tournament.NumberOfRounds);
+        private List<Viewbox> small_blind_labels = new List<Viewbox>(Tournament.NumberOfRounds);
+        private List<Viewbox> small_blind_inputs = new List<Viewbox>(Tournament.NumberOfRounds);
+        private List<Viewbox> large_blind_labels = new List<Viewbox>(Tournament.NumberOfRounds);
+        private List<Viewbox> large_blind_inputs = new List<Viewbox>(Tournament.NumberOfRounds);
+        private List<Viewbox> duration_labels = new List<Viewbox>(Tournament.NumberOfRounds);
+        private List<Viewbox> duration_inputs = new List<Viewbox>(Tournament.NumberOfRounds);
 
-        private List<Viewbox> round_check_boxes = new List<Viewbox>(kRoundNum);
-        private List<Viewbox> round_labels = new List<Viewbox>(kRoundNum);
-        private List<Viewbox> small_blind_labels = new List<Viewbox>(kRoundNum);
-        private List<Viewbox> small_blind_inputs = new List<Viewbox>(kRoundNum);
-        private List<Viewbox> large_blind_labels = new List<Viewbox>(kRoundNum);
-        private List<Viewbox> large_blind_inputs = new List<Viewbox>(kRoundNum);
-        private List<Viewbox> duration_labels = new List<Viewbox>(kRoundNum);
-        private List<Viewbox> duration_inputs = new List<Viewbox>(kRoundNum);
+        private Tournament tournament = new Tournament();
 
         public TournamentWindow()
         {
             InitializeComponent();
 
-            for(int i = 0; i < kRoundNum; i++)
+            for(int i = 0; i < Tournament.NumberOfRounds; i++)
             {
                 //round checkbox
                 CheckBox round_cb = new CheckBox();
                 round_cb.Background = Brushes.Transparent;
                 round_cb.BorderBrush = Brushes.White;
+                round_cb.IsThreeState = false;
                 Viewbox round_cb_view = new Viewbox();
 
                 round_cb_view.Child = round_cb;
@@ -72,6 +74,7 @@ namespace ValleysEdgePokerTimer
 
                 Grid.SetRow(small_blind_lb_view, i);
                 Grid.SetColumn(small_blind_lb_view, 2);
+                Grid.SetColumnSpan(small_blind_lb_view, 2);
 
                 small_blind_lb_view.Child = small_blind_lb;
                 small_blind_labels.Add(small_blind_lb_view);
@@ -83,12 +86,13 @@ namespace ValleysEdgePokerTimer
                 small_blind_in.Background = Brushes.Transparent;
                 small_blind_in.BorderBrush = Brushes.Transparent;
                 small_blind_in.Foreground = Brushes.White;
+                small_blind_in.PreviewTextInput += IsTextBoxNumber;
                 Viewbox small_blind_in_view = new Viewbox();
 
                 small_blind_in.Text = "0";
 
                 Grid.SetRow(small_blind_in_view, i);
-                Grid.SetColumn(small_blind_in_view, 3);
+                Grid.SetColumn(small_blind_in_view, 4);
 
                 small_blind_in_view.Child = small_blind_in;
                 small_blind_inputs.Add(small_blind_in_view);
@@ -102,7 +106,7 @@ namespace ValleysEdgePokerTimer
                 large_blind_lb.Text = "Large Blind";
 
                 Grid.SetRow(large_blind_lb_view, i);
-                Grid.SetColumn(large_blind_lb_view, 4);
+                Grid.SetColumn(large_blind_lb_view, 5);
 
                 large_blind_lb_view.Child = large_blind_lb;
                 large_blind_labels.Add(large_blind_lb_view);
@@ -114,12 +118,13 @@ namespace ValleysEdgePokerTimer
                 large_blind_in.Background = Brushes.Transparent;
                 large_blind_in.BorderBrush = Brushes.Transparent;
                 large_blind_in.Foreground = Brushes.White;
+                large_blind_in.PreviewTextInput += IsTextBoxNumber;
                 Viewbox large_blind_in_view = new Viewbox();
 
                 large_blind_in.Text = "0";
 
                 Grid.SetRow(large_blind_in_view, i);
-                Grid.SetColumn(large_blind_in_view, 5);
+                Grid.SetColumn(large_blind_in_view, 6);
 
                 large_blind_in_view.Child = large_blind_in;
                 large_blind_inputs.Add(large_blind_in_view);
@@ -133,7 +138,7 @@ namespace ValleysEdgePokerTimer
                 duration_lb.Text = "Duration";
 
                 Grid.SetRow(duration_lb_view, i);
-                Grid.SetColumn(duration_lb_view, 6);
+                Grid.SetColumn(duration_lb_view, 7);
 
                 duration_lb_view.Child = duration_lb;
                 duration_labels.Add(duration_lb_view);
@@ -145,18 +150,44 @@ namespace ValleysEdgePokerTimer
                 duration_in.Background = Brushes.Transparent;
                 duration_in.BorderBrush = Brushes.Transparent;
                 duration_in.Foreground = Brushes.White;
+                duration_in.PreviewTextInput += IsTextBoxNumber;
                 Viewbox duration_in_view = new Viewbox();
 
                 duration_in.Text = "0";
 
                 Grid.SetRow(duration_in_view, i);
-                Grid.SetColumn(duration_in_view, 7);
+                Grid.SetColumn(duration_in_view, 8);
 
                 duration_in_view.Child = duration_in;
                 duration_inputs.Add(duration_in_view);
 
                 main_grid.Children.Add(duration_inputs.ElementAt(i));
             }
+        }
+
+        private void IsTextBoxNumber(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            List<bool> enables = new List<bool>();
+            List<int> smalls = new List<int>();
+            List<int> larges = new List<int>();
+            List<int> durations = new List<int>();
+
+            for(int i = 0; i < Tournament.NumberOfRounds; i++)
+            {
+                enables.Add((bool)((CheckBox)round_check_boxes[i].Child).IsChecked);
+                smalls.Add(int.Parse(((TextBox)small_blind_inputs[i].Child).Text));
+                larges.Add(int.Parse(((TextBox)large_blind_inputs[i].Child).Text));
+                durations.Add(int.Parse(((TextBox)duration_inputs[i].Child).Text));
+            }
+
+            tournament = new Tournament(enables, smalls, larges, durations);
+            this.Close();
         }
     }
 }

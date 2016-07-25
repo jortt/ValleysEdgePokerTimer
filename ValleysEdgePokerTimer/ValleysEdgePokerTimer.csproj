@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Tournament.cs" />
     <Compile Include="TournamentWindow.xaml.cs">
       <DependentUpon>TournamentWindow.xaml</DependentUpon>
     </Compile>

@@ -10,7 +10,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
@@ -26,6 +27,8 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+        <Button x:Name="button" Grid.ColumnSpan="2" Content="Set" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Grid.Column="3" Grid.Row="8" Height="42" Click="button_Click"/>
     </Grid>
 </Window>
