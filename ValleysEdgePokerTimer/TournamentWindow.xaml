@@ -5,30 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ValleysEdgePokerTimer"
         mc:Ignorable="d"
-        Title="Tournament" Height="409" Width="642" Background="#FF004600" Foreground="White">
-    <Grid x:Name="main_grid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <Button x:Name="button" Grid.ColumnSpan="2" Content="Set" HorizontalAlignment="Left" VerticalAlignment="Top" Width="91" Grid.Column="3" Grid.Row="8" Height="42" Click="button_Click"/>
+        Title="New Tournament" Height="300" Width="400">
+    <Grid>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="253" Margin="10,10,0,0" VerticalAlignment="Top" Width="265"/>
+        <Button x:Name="AddRoundBtn" Content="Add Round" HorizontalAlignment="Left" Margin="280,88,0,0" VerticalAlignment="Top" Width="105"/>
+        <Button x:Name="EditRoundBtn" Content="Edit Round" HorizontalAlignment="Left" Margin="280,113,0,0" VerticalAlignment="Top" Width="105"/>
+        <Button x:Name="AddBreakBtn" Content="Add Break" HorizontalAlignment="Left" Margin="280,138,0,0" VerticalAlignment="Top" Width="105"/>
+        <Button x:Name="RemoveBtn" Content="Remove" HorizontalAlignment="Left" Margin="280,163,0,0" VerticalAlignment="Top" Width="105"/>
+
     </Grid>
 </Window>

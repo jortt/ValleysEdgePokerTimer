@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ValleysEdgePokerTimer"
         mc:Ignorable="d"
-        Title="Valley's Edge Poker Timer" Height="711.063" Width="1047.342" Background="#FF004600">
+        Title="Valley's Edge Poker Timer" Height="500" Width="800" Background="#FF004600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400*"/>

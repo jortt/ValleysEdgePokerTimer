@@ -15,16 +15,13 @@ using System.Windows.Shapes;
 namespace ValleysEdgePokerTimer
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for EditRound.xaml
     /// </summary>
-    public partial class TournamentWindow : Window
+    public partial class EditRound : Window
     {
-        private List<IRound> rounds_ = new List<IRound>();
-
-        public TournamentWindow()
+        public EditRound()
         {
             InitializeComponent();
-            rounds_.Add(new RoundOfPlay(60, 10, 20));
         }
     }
 }
