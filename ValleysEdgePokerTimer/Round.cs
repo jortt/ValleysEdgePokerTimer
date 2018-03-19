@@ -19,6 +19,27 @@ namespace ValleysEdgePokerTimer
 
     class RoundOfPlay : IRound
     {
+        public string bTime
+        {
+            get
+            {
+                return "Time: " + (time_left / 60).ToString() + " mins";
+            }
+        }
+        public string bSmall_Blind
+        {
+            get
+            {
+                return "Small: " + small_blind.ToString();
+            }
+        }
+        public string bLarge_Blind
+        {
+            get
+            {
+                return "Large:" + large_blind.ToString();
+            }
+        }
         public int time_left { get; private set; }
         public int small_blind { get; }
         public int large_blind { get; }

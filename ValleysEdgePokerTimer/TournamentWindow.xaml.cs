@@ -19,12 +19,14 @@ namespace ValleysEdgePokerTimer
     /// </summary>
     public partial class TournamentWindow : Window
     {
-        private List<IRound> rounds_ = new List<IRound>();
+        private List<RoundOfPlay> rounds_ = new List<RoundOfPlay>();
 
         public TournamentWindow()
         {
             InitializeComponent();
             rounds_.Add(new RoundOfPlay(60, 10, 20));
+
+            listBox.ItemsSource = rounds_;
         }
     }
 }
